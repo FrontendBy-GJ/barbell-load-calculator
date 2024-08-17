@@ -1,0 +1,86 @@
+:root {
+  --max-weight: 55; /* Set the max weight of biggest plate */
+  --min-weight: 2.5; /* Set the min weight of smallest plate */
+  --max-size: 250px; /* Maximum size of the largest plate */
+  --min-size: 170px; /* Minimum size of the smallest plate */
+  --max-text-size: 24px; /* Maximum text size */
+  --min-text-size: 18px; /* Minimum text size */
+}
+
+.plate {
+  width: calc(
+    var(--min-size) + (var(--weight) - var(--min-weight)) /
+      (var(--max-weight) - var(--min-weight)) *
+      (var(--max-size) - var(--min-size))
+  );
+
+  height: calc(
+    var(--min-size) + (var(--weight) - var(--min-weight)) /
+      (var(--max-weight) - var(--min-weight)) *
+      (var(--max-size) - var(--min-size))
+  );
+}
+
+[data-weight] {
+  font-size: calc(
+    var(--min-text-size) + (var(--weight) - var(--min-weight)) /
+      (var(--max-weight) - var(--min-weight)) *
+      (var(--max-text-size) - var(--min-text-size))
+  );
+
+  text-shadow: 1px 1px 1px black;
+}
+
+[data-weight="55"]:not(span),
+[data-weight="55"]:not(span):after,
+[data-weight="5"]:not(span),
+[data-weight="5"]:not(span):after {
+  background-color: theme("colors.red.700");
+}
+[data-weight="55"]:not(span):before,
+[data-weight="5"]:not(span):before {
+  background-color: theme("colors.red.800");
+}
+
+[data-weight="45"]:not(span),
+[data-weight="45"]:not(span)::after,
+[data-weight="2.5"]:not(span),
+[data-weight="2.5"]:not(span)::after {
+  background-color: theme("colors.blue.700");
+}
+[data-weight="45"]:not(span)::before,
+[data-weight="2.5"]:not(span)::before {
+  background-color: theme("colors.blue.800");
+}
+
+[data-weight="35"]:not(span),
+[data-weight="35"]:not(span)::after {
+  background-color: theme("colors.yellow.400");
+}
+[data-weight="35"]:not(span)::before {
+  background-color: theme("colors.yellow.500");
+}
+
+[data-weight="25"]:not(span),
+[data-weight="25"]:not(span)::after {
+  background-color: theme("colors.green.700");
+}
+[data-weight="25"]:not(span)::before {
+  background-color: theme("colors.green.800");
+}
+
+[data-weight="15"]:not(span),
+[data-weight="15"]:not(span)::after {
+  background-color: theme("colors.slate.700");
+}
+[data-weight="15"]:not(span)::before {
+  background-color: theme("colors.slate.800");
+}
+
+[data-weight="10"]:not(span),
+[data-weight="10"]:not(span)::after {
+  background-color: theme("colors.slate.300");
+}
+[data-weight="10"]:not(span)::before {
+  background-color: theme("colors.slate.400");
+}
