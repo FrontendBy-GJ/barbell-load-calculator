@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 type WeightPlateContextType = {
   platesAvailable: { [key: number]: number };
@@ -24,31 +24,65 @@ export const WeightPlateContext = createContext<
   WeightPlateContextType | undefined
 >(undefined);
 
+const initialPlatesAvailable: {
+  [key: number]: number;
+} = {
+  55: 0,
+  45: 2,
+  35: 2,
+  25: 2,
+  15: 0,
+  10: 2,
+  5: 4,
+  2.5: 2,
+};
+
 export const WeightPlateContextProvider = ({
   children,
 }: {
   children: ReactNode;
 }) => {
-  const [platesAvailable, setPlatesAvailable] = useState<{
-    [key: number]: number;
-  }>({
-    55: 0,
-    45: 2,
-    35: 2,
-    25: 2,
-    15: 0,
-    10: 2,
-    5: 4,
-    2.5: 2,
+  const [platesAvailable, setPlatesAvailable] = useState(() => {
+    try {
+      const savedPlates = localStorage.getItem("platesAvailable");
+      return savedPlates ? JSON.parse(savedPlates) : initialPlatesAvailable;
+    } catch (error) {
+      console.error("Error parsing platesAvailable", error);
+      return initialPlatesAvailable;
+    }
   });
 
   const [platesNeeded, setPlatesNeeded] = useState<Map<number, number>>(
     new Map(),
   );
-  const [totalWeight, setTotalWeight] = useState<number>(225);
+  const [totalWeight, setTotalWeight] = useState<number>(() => {
+    try {
+      const savedTotalWeight = localStorage.getItem("totalWeight");
+      return savedTotalWeight ? JSON.parse(savedTotalWeight) : 225;
+    } catch (error) {
+      console.error("Error parsing totalWeight", error);
+      return 225;
+    }
+  });
   const [targetWeight, setTargetWeight] = useState<string>("");
-  const [percentage, setPercentage] = useState(100);
-  const [barWeight, setBarWeight] = useState(45);
+  const [percentage, setPercentage] = useState(() => {
+    try {
+      const savedPercentage = localStorage.getItem("percentage");
+      return savedPercentage ? JSON.parse(savedPercentage) : 100;
+    } catch (error) {
+      console.error("Error parsing percentage", error);
+      return 100;
+    }
+  });
+  const [barWeight, setBarWeight] = useState(() => {
+    try {
+      const savedBarWeight = localStorage.getItem("barWeight");
+      return savedBarWeight ? JSON.parse(savedBarWeight) : 45;
+    } catch (error) {
+      console.error("Error parsing barWeight");
+      return 45;
+    }
+  });
 
   const percentageOfTotalWeight = (percentage: number, weight: number) => {
     return Math.trunc((percentage / 100) * weight);
@@ -81,6 +115,19 @@ export const WeightPlateContextProvider = ({
 
     return plates_needed;
   };
+
+  useEffect(() => {
+    localStorage.setItem("platesAvailable", JSON.stringify(platesAvailable));
+  }, [platesAvailable]);
+  useEffect(() => {
+    localStorage.setItem("totalWeight", JSON.stringify(totalWeight));
+  }, [totalWeight]);
+  useEffect(() => {
+    localStorage.setItem("percentage", JSON.stringify(percentage));
+  }, [percentage]);
+  useEffect(() => {
+    localStorage.setItem("barWeight", JSON.stringify(barWeight));
+  }, [barWeight]);
 
   return (
     <WeightPlateContext.Provider
