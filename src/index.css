@@ -5,3 +5,16 @@
 :root {
   --bg-clr: theme(colors.slate.100);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible {
+    transition: outline-offset 75ms ease-out;
+  }
+  :not(:active):focus-visible {
+    transition-duration: 0.25s;
+  }
+}
+
+:not(:active):focus-visible {
+  outline-offset: 0.3rem;
+}
