@@ -8,7 +8,7 @@ export default function WeightPlates() {
   return (
     <div className="my-auto flex h-full w-full flex-col">
       {targetWeight && (
-        <span className="font-Protest text-center text-4xl md:text-5xl">
+        <span className="text-center font-Protest text-4xl md:text-5xl">
           {targetWeight} lbs
         </span>
       )}
@@ -17,7 +17,7 @@ export default function WeightPlates() {
           Object.entries(platesAvailable)
             .sort(([a], [b]) => Number(b) - Number(a))
             .map(([weight, avail]) => {
-              if (avail === 0) {
+              if (avail === 0 || avail === ("" as unknown)) {
                 return null;
               }
               return (

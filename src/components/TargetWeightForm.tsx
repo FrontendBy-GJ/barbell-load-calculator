@@ -72,13 +72,21 @@ export default function TargetWeightForm() {
         </label>{" "}
         <input
           type="number"
+          inputMode="numeric"
+          autoComplete="off"
+          required
           name="total_weight"
           id="total_weight"
           min={50}
           step={5}
           placeholder="225"
           value={totalWeight}
-          onChange={(e) => setTotalWeight(Number(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            setTotalWeight(
+              value === "" ? ("" as unknown as number) : Number(value),
+            );
+          }}
           className="w-[4.5rem] rounded p-1"
         />
       </div>

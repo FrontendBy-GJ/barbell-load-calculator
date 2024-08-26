@@ -8,9 +8,10 @@ export default function WeightPlateInventory() {
     e: ChangeEvent<HTMLInputElement>,
     weight: number,
   ) => {
+    const value = e.target.value;
     setPlatesAvailable({
       ...platesAvailable,
-      [weight]: Number(e.target.value),
+      [weight]: value === "" ? ("" as unknown as number) : Number(value),
     });
   };
 
@@ -36,6 +37,8 @@ export default function WeightPlateInventory() {
               </label>
               <input
                 type="number"
+                inputMode="numeric"
+                autoComplete="off"
                 name="plate_avail"
                 id={weight}
                 min={0}
