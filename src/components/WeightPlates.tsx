@@ -5,12 +5,21 @@ export default function WeightPlates() {
   let { platesAvailable, platesNeeded, targetWeight } =
     useWeightPlatesContext();
 
+  const totalWeightOfPlatesAvail = Object.entries(platesAvailable).reduce(
+    (total, [weight, avail]) => total + Number(weight) * Number(avail),
+    0,
+  );
+
   return (
     <div className="my-auto flex h-full w-full flex-col">
-      {targetWeight && (
-        <span className="text-center font-Protest text-4xl md:text-5xl">
+      {targetWeight ? (
+        <span className="font-Bebas text-center text-5xl md:text-6xl">
           {targetWeight} lbs
         </span>
+      ) : (
+        <p className="font-Bebas mt-4 text-center text-5xl md:text-6xl">
+          Available: {totalWeightOfPlatesAvail}lbs
+        </p>
       )}
       <div className="flex flex-wrap items-center justify-center -space-y-16 px-8 py-10 lg:-space-x-16 lg:space-y-0 lg:px-12">
         {platesNeeded.size === 0 &&
