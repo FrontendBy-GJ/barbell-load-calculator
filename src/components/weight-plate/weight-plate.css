@@ -3,8 +3,8 @@
   --min-weight: 2.5; /* Set the min weight of smallest plate */
   --max-size: 250px; /* Maximum size of the largest plate */
   --min-size: 170px; /* Minimum size of the smallest plate */
-  --max-text-size: 24px; /* Maximum text size */
-  --min-text-size: 18px; /* Minimum text size */
+  --max-text-size: 2rem; /* Maximum text size */
+  --min-text-size: 1.3rem; /* Minimum text size */
 }
 
 .plate {

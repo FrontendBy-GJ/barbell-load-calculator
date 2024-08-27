@@ -5,6 +5,7 @@ export default {
     extend: {},
     fontFamily: {
       Protest: ["Protest Strike", "sans-serif"],
+      Bebas: ["Bebas Neue", "sans-serif"],
     },
   },
   plugins: [],
