@@ -1,7 +1,11 @@
 import { FormEvent, useCallback } from "react";
 import useWeightPlatesContext from "../hooks/useWeightPlatesContext";
 
-export default function TargetWeightForm() {
+export default function TargetWeightForm({
+  setIsDialogOpen,
+}: {
+  setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const {
     percentageOfTotalWeight,
     finalWeight,
@@ -42,7 +46,7 @@ export default function TargetWeightForm() {
       ) + barWeight;
 
     if (totalWeight > totalAvailableWeight) {
-      alert("Not enough weight plates available.");
+      setIsDialogOpen(true);
       return;
     }
 
