@@ -1,4 +1,14 @@
-import { FormEvent, useCallback } from "react";
+declare module "react" {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    popover?: "auto" | "manual";
+  }
+
+  interface ButtonHTMLAttributes<T> extends HTMLAttributes<T> {
+    popovertarget?: string;
+  }
+}
+
+import { FormEvent, useCallback, useRef } from "react";
 import useWeightPlatesContext from "../hooks/useWeightPlatesContext";
 
 export default function TargetWeightForm({
@@ -20,6 +30,7 @@ export default function TargetWeightForm({
     setTotalWeight,
     setTargetWeight,
   } = useWeightPlatesContext();
+  const popoverRef = useRef<HTMLDivElement>(null);
 
   const percentageOptions = () => {
     let options = [];
@@ -54,6 +65,11 @@ export default function TargetWeightForm({
     let total = Number(weight_plate_total) + barWeight;
     let target_weight = percentageOfTotalWeight(percentage, total);
     target_weight = finalWeight(target_weight);
+
+    if (target_weight <= barWeight) {
+      popoverRef?.current?.showPopover();
+      return;
+    }
 
     const plates = weightPlatesNeeded(target_weight, barWeight);
     setPlatesNeeded(() => plates);
@@ -139,9 +155,22 @@ export default function TargetWeightForm({
       <button
         type="submit"
         className="w-full rounded bg-blue-600 px-4 py-2 text-slate-50 shadow-lg active:bg-opacity-30"
+        popovertarget="target-weight"
       >
         Calculate
       </button>
+
+      <div
+        id="target-weight"
+        popover="auto"
+        ref={popoverRef}
+        className="max-w-[35ch] rounded-md bg-red-500 p-4 text-slate-100"
+      >
+        <p>
+          The target weight must exceed the bar weight. Please adjust your
+          inputs.
+        </p>
+      </div>
     </form>
   );
 }

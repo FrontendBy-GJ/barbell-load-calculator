@@ -57,3 +57,22 @@ dialog {
     background-color: black;
   }
 }
+
+[popover]:popover-open {
+  translate: 0 0;
+}
+/*   EXIT STATE   */
+[popover] {
+  transition:
+    translate 300ms ease-in-out,
+    display 300ms ease-in-out allow-discrete,
+    overlay 300ms ease-in-out allow-discrete;
+  translate: 0 -22rem;
+}
+
+/*   0. BEFORE-OPEN STATE   */
+@starting-style {
+  [popover]:popover-open {
+    translate: 0 -22rem;
+  }
+}
