@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# Barbell Load Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Barbell Load Calculator _(BLC)_ is a web application designed to simplify the process of calculating weight plates for barbell exercises. Whether you're lifting heavy loads or aiming for precision with lighter weights, _BLC_ eliminates the mental math by dynamically calculating the exact weight plates required based on your inputs.
 
-Currently, two official plugins are available:
+![Barbell Load Calculator](public/barbell-load-calculator.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Customizable Plate Inventory**: Users can input the weight plates they have available, ensuring accurate calculations based on their personal setup.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Target Weight Calculation**: Input your desired total weight and bar weight, and the app will calculate the plates required.
 
-- Configure the top-level `parserOptions` property like this:
+- **Percentage-Based Lifting**: Calculate plates for a percentage of your total weight _(e.g., 85% of 225 lbs)_.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Responsive Design**: Optimized for mobile, tablet, and desktop users.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Local Storage Integration**: Saves user preferences and plate inventory for future sessions.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **User Feedback**: Alerts and popovers provide guidance when inputs are invalid _(e.g., insufficient plates)_.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## How It Works
+
+1. **Input Your Total Weight**: Enter the total weight you want to lift.
+
+2. **Select Your Barbell Weight**: Choose between standard options _(e.g., 45 lbs, 15 lbs)_.
+
+3. **Specify Available Plates**: Customize your inventory by entering the quantity of each plate you own.
+
+4. **Calculate**: The app dynamically calculates the plates required and displays them in an easy-to-read format.
+
+## Technologies Used
+
+- **React**: Frontend framework for building dynamic and interactive user interfaces.
+
+- **TypeScript**: Ensures type safety and maintainable code.
+
+- **Tailwind CSS**: Utility-first CSS framework for responsive and clean design.
+
+- **HTML Popover API**: Provides accessible and lightweight feedback to users.
+
+- **Local Storage**: Persists user data between sessions.
+
+### Links
+
+- Live Site: [https://barbell-load-calculator.netlify.app/](https://barbell-load-calculator.netlify.app/)
