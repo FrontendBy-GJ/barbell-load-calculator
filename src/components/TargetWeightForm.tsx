@@ -8,7 +8,7 @@ declare module "react" {
   }
 }
 
-import { FormEvent, useCallback, useRef } from "react";
+import { FormEvent, useCallback, useEffect, useRef } from "react";
 import useWeightPlatesContext from "../hooks/useWeightPlatesContext";
 
 export default function TargetWeightForm({
@@ -31,6 +31,7 @@ export default function TargetWeightForm({
     setTargetWeight,
   } = useWeightPlatesContext();
   const popoverRef = useRef<HTMLDivElement>(null);
+  const totalWeightRef = useRef<HTMLInputElement>(null);
 
   const percentageOptions = () => {
     let options = [];
@@ -84,13 +85,20 @@ export default function TargetWeightForm({
     percentageOfTotalWeight,
   ]);
 
+  useEffect(() => {
+    if (totalWeightRef.current) {
+      totalWeightRef.current.focus();
+    }
+  }, []);
+
   return (
-    <form onSubmit={handleFormSubmit} className="space-y-4 px-4">
+    <form onSubmit={handleFormSubmit} className="px-4 space-y-4">
       <div className="flex items-center gap-2">
         <label className="font-semibold" htmlFor="total_weight">
           Total Weight:
         </label>{" "}
         <input
+          ref={totalWeightRef}
           type="number"
           inputMode="numeric"
           autoComplete="off"
@@ -120,7 +128,7 @@ export default function TargetWeightForm({
           onChange={(e) => setPercentage(Number(e.target.value))}
           name="percentage"
           id="percentage"
-          className="rounded p-2"
+          className="p-2 rounded"
         >
           {percentageOptions()}
         </select>
@@ -154,7 +162,7 @@ export default function TargetWeightForm({
 
       <button
         type="submit"
-        className="w-full rounded bg-blue-600 px-4 py-2 text-slate-50 shadow-lg active:bg-opacity-30"
+        className="w-full px-4 py-2 bg-blue-600 rounded shadow-lg text-slate-50 active:bg-opacity-30"
         popovertarget="target-weight"
       >
         Calculate
