@@ -7,6 +7,7 @@
 
 :root {
   --bg-clr: theme(colors.slate.100);
+  interpolate-size: allow-keywords;
 }
 
 @media (prefers-reduced-motion: no-preference) {
