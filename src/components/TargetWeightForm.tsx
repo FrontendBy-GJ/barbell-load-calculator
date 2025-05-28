@@ -34,7 +34,7 @@ export default function TargetWeightForm({
   const totalWeightRef = useRef<HTMLInputElement>(null);
 
   const percentageOptions = () => {
-    let options = [];
+    const options = [];
     for (let i = 100; i >= 5; i -= 5) {
       options.push(
         <option key={i} value={i}>
@@ -62,8 +62,8 @@ export default function TargetWeightForm({
       return;
     }
 
-    let weight_plate_total = totalWeight - barWeight;
-    let total = Number(weight_plate_total) + barWeight;
+    const weight_plate_total = totalWeight - barWeight;
+    const total = Number(weight_plate_total) + barWeight;
     let target_weight = percentageOfTotalWeight(percentage, total);
     target_weight = finalWeight(target_weight);
 
@@ -86,13 +86,13 @@ export default function TargetWeightForm({
   ]);
 
   useEffect(() => {
-    if (totalWeightRef.current) {
+    if (window.innerWidth >= 1024 && totalWeightRef.current) {
       totalWeightRef.current.focus();
     }
   }, []);
 
   return (
-    <form onSubmit={handleFormSubmit} className="px-4 space-y-4">
+    <form onSubmit={handleFormSubmit} className="space-y-4 px-4">
       <div className="flex items-center gap-2">
         <label className="font-semibold" htmlFor="total_weight">
           Total Weight:
@@ -128,7 +128,7 @@ export default function TargetWeightForm({
           onChange={(e) => setPercentage(Number(e.target.value))}
           name="percentage"
           id="percentage"
-          className="p-2 rounded"
+          className="rounded p-2"
         >
           {percentageOptions()}
         </select>
@@ -162,7 +162,7 @@ export default function TargetWeightForm({
 
       <button
         type="submit"
-        className="w-full px-4 py-2 bg-blue-600 rounded shadow-lg text-slate-50 active:bg-opacity-30"
+        className="w-full rounded bg-blue-600 px-4 py-2 text-slate-50 shadow-lg active:bg-opacity-30"
         popovertarget="target-weight"
       >
         Calculate

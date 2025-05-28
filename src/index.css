@@ -10,15 +10,6 @@
   interpolate-size: allow-keywords;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  :focus-visible {
-    transition: outline-offset 75ms ease-out;
-  }
-  :not(:active):focus-visible {
-    transition-duration: 0.25s;
-  }
-}
-
 :not(:active):focus-visible {
   outline-offset: 0.3rem;
 }
@@ -75,5 +66,14 @@ dialog {
 @starting-style {
   [popover]:popover-open {
     translate: 0 -22rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible {
+    transition: outline-offset 75ms ease-out;
+  }
+  :not(:active):focus-visible {
+    transition-duration: 0.25s;
   }
 }

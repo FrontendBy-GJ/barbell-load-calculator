@@ -9,6 +9,10 @@ export default function WeightPlateInventory() {
       const isOpen = localStorage.getItem("isInventoryOpen");
       return isOpen ? JSON.parse(isOpen) : false;
     } catch (error) {
+      console.error(
+        'Error reading "isInventoryOpen" from localStorage:',
+        error,
+      );
       return false;
     }
   });
@@ -30,9 +34,9 @@ export default function WeightPlateInventory() {
 
   return (
     <>
-      <div className="flex flex-col items-center px-4 font-semibold bg-blue-300">
+      <div className="flex flex-col items-center bg-blue-300 px-4 font-semibold">
         <span className="pt-4 text-lg">Inventory</span>
-        <div className="flex justify-between w-full py-2">
+        <div className="flex w-full justify-between py-2">
           <span>Weight (lb)</span>
           <span>Available</span>
         </div>
@@ -51,7 +55,7 @@ export default function WeightPlateInventory() {
           .map(([weight, amount]) => (
             <div
               key={weight}
-              className="flex items-center justify-between h-10"
+              className="flex h-10 items-center justify-between"
             >
               <label htmlFor={weight} className="w-8">
                 {weight}
@@ -65,7 +69,7 @@ export default function WeightPlateInventory() {
                 min={0}
                 value={amount}
                 onChange={(e) => handleInputChange(e, Number(weight))}
-                className="w-16 h-full p-2 rounded"
+                className="h-full w-16 rounded p-2"
               />
             </div>
           ))}
