@@ -14,6 +14,65 @@
   outline-offset: 0.3rem;
 }
 
+.clip-path {
+  position: relative;
+  @apply bg-blue-600;
+  clip-path: polygon(
+    4% 0,
+    96% 0,
+    100% 2%,
+    100% 98%,
+    96% 100%,
+    4% 100%,
+    0 98%,
+    0 2%
+  );
+
+  @media (width > 780px) {
+    clip-path: polygon(
+      2% 0,
+      98% 0,
+      100% 2%,
+      100% 98%,
+      98% 100%,
+      2% 100%,
+      0 98%,
+      0 2%
+    );
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: var(--bg-clr);
+    clip-path: polygon(
+      4% 0,
+      96% 0,
+      100% 2%,
+      100% 98%,
+      96% 100%,
+      4% 100%,
+      0 98%,
+      0 2%
+    );
+    z-index: -1;
+
+    @media (width > 780px) {
+      clip-path: polygon(
+        2% 0,
+        98% 0,
+        100% 2%,
+        100% 98%,
+        98% 100%,
+        2% 100%,
+        0 98%,
+        0 2%
+      );
+    }
+  }
+}
+
 dialog {
   &,
   &::backdrop {

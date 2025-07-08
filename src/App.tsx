@@ -19,8 +19,8 @@ function App() {
 
       <WeightPlateContextProvider>
         <main className="max-w-7xl px-4 pb-10 md:mx-auto md:px-8">
-          <div className="mt-6 flex flex-col rounded border-2 border-blue-600 md:flex-row">
-            <div className="md:min-w-80 md:max-w-80 md:border-r-2 md:border-blue-600">
+          <div className="clip-path mt-6 flex flex-col md:flex-row">
+            <div className="md:min-w-80 md:max-w-80 md:border-r-4 md:border-blue-600">
               <WeightPlateInventory />
               <hr
                 aria-hidden="true"
