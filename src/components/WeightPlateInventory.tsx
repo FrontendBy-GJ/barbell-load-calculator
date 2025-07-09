@@ -34,7 +34,7 @@ export default function WeightPlateInventory() {
 
   return (
     <>
-      <div className="flex flex-col items-center bg-blue-300 px-4 font-semibold">
+      <div className="flex flex-col items-center border-x-[3px] border-t-[3px] border-blue-600 bg-blue-300 px-4 font-semibold md:border-r-0">
         <span className="pt-4 text-lg">Inventory</span>
         <div className="flex w-full justify-between py-2">
           <span>Weight (lb)</span>
@@ -69,7 +69,7 @@ export default function WeightPlateInventory() {
                 min={0}
                 value={amount}
                 onChange={(e) => handleInputChange(e, Number(weight))}
-                className="h-full w-16 rounded p-2"
+                className="h-full w-16 rounded border-[0.5px] border-slate-900 p-2"
               />
             </div>
           ))}
