@@ -25,13 +25,19 @@
 header {
   position: relative;
   background: var(--blue-clr);
-  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
   clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
   isolation: auto;
   padding-block: 1rem;
   transition: clip-path 300ms linear;
 
   @media (width >= 768px) {
+    -webkit-clip-path: polygon(
+      20% 0,
+      calc(100% - 20%) 0,
+      calc(100% - 30%) 100%,
+      30% 100%
+    );
     clip-path: polygon(
       20% 0,
       calc(100% - 20%) 0,
@@ -44,12 +50,22 @@ header {
     content: "";
     position: absolute;
     background: hsl(0 0 100%);
-    inset: 0 4px 4px;
+    inset-inline: 0;
+    inset-block: 0 3px;
+    width: 99%;
+    margin-inline: auto;
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     z-index: -1;
     transition: clip-path 300ms linear;
 
     @media (width >= 768px) {
+      -webkit-clip-path: polygon(
+        20% 0,
+        calc(100% - 20%) 0,
+        calc(100% - 30%) 100%,
+        30% 100%
+      );
       clip-path: polygon(
         20% 0,
         calc(100% - 20%) 0,
@@ -69,9 +85,11 @@ header h1 img {
 .clip-path {
   position: relative;
   background: var(--blue-clr);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 98%, 96% 100%, 4% 100%, 0 98%);
   clip-path: polygon(0 0, 100% 0, 100% 98%, 96% 100%, 4% 100%, 0 98%);
 
-  @media (width >= 900px) {
+  @media (width > 900px) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 2% 100%, 0 96%);
     clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 2% 100%, 0 96%);
   }
 
@@ -80,10 +98,19 @@ header h1 img {
     position: absolute;
     inset: 3px;
     background: var(--bg-clr);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 98%, 96% 100%, 4% 100%, 0 98%);
     clip-path: polygon(0 0, 100% 0, 100% 98%, 96% 100%, 4% 100%, 0 98%);
     z-index: -1;
 
-    @media (width >= 900px) {
+    @media (width > 900px) {
+      -webkit-clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 96%,
+        98% 100%,
+        2% 100%,
+        0 96%
+      );
       clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 2% 100%, 0 96%);
     }
   }
