@@ -115,7 +115,7 @@ export default function TargetWeightForm({
               value === "" ? ("" as unknown as number) : Number(value),
             );
           }}
-          className="w-[4.5rem] rounded p-1 max-[441px]:focus-visible:outline-none"
+          className="w-[4.5rem] rounded border-[0.5px] border-slate-900 p-1 max-[441px]:focus-visible:outline-none"
         />
       </div>
 
@@ -128,7 +128,7 @@ export default function TargetWeightForm({
           onChange={(e) => setPercentage(Number(e.target.value))}
           name="percentage"
           id="percentage"
-          className="rounded p-2 max-[441px]:focus-visible:outline-none"
+          className="rounded border-[0.5px] border-slate-900 p-2 max-[441px]:focus-visible:outline-none"
         >
           {percentageOptions()}
         </select>
