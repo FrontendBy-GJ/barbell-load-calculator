@@ -7,6 +7,7 @@
 
 :root {
   --bg-clr: theme(colors.slate.100);
+  --blue-clr: theme(colors.blue.600);
   interpolate-size: allow-keywords;
 }
 
@@ -14,61 +15,76 @@
   outline-offset: 0.3rem;
 }
 
-.clip-path {
-  position: relative;
-  @apply bg-blue-600;
-  clip-path: polygon(
-    4% 0,
-    96% 0,
-    100% 2%,
-    100% 98%,
-    96% 100%,
-    4% 100%,
-    0 98%,
-    0 2%
-  );
+.app {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--bg-clr);
+}
 
-  @media (width > 780px) {
+header {
+  position: relative;
+  background: var(--blue-clr);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  isolation: auto;
+  padding-block: 1rem;
+  transition: clip-path 300ms linear;
+
+  @media (width >= 768px) {
     clip-path: polygon(
-      2% 0,
-      98% 0,
-      100% 2%,
-      100% 98%,
-      98% 100%,
-      2% 100%,
-      0 98%,
-      0 2%
+      20% 0,
+      calc(100% - 20%) 0,
+      calc(100% - 30%) 100%,
+      30% 100%
     );
   }
 
   &::after {
     content: "";
     position: absolute;
-    inset: 4px;
+    background: hsl(0 0 100%);
+    inset: 0 4px 4px;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+    z-index: -1;
+    transition: clip-path 300ms linear;
+
+    @media (width >= 768px) {
+      clip-path: polygon(
+        20% 0,
+        calc(100% - 20%) 0,
+        calc(100% - 30%) 100%,
+        30% 100%
+      );
+    }
+  }
+}
+header h1 img {
+  width: clamp(240px, 40vw, 320px);
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.clip-path {
+  position: relative;
+  background: var(--blue-clr);
+  clip-path: polygon(0 0, 100% 0, 100% 98%, 96% 100%, 4% 100%, 0 98%);
+
+  @media (width >= 900px) {
+    clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 2% 100%, 0 96%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
     background: var(--bg-clr);
-    clip-path: polygon(
-      4% 0,
-      96% 0,
-      100% 2%,
-      100% 98%,
-      96% 100%,
-      4% 100%,
-      0 98%,
-      0 2%
-    );
+    clip-path: polygon(0 0, 100% 0, 100% 98%, 96% 100%, 4% 100%, 0 98%);
     z-index: -1;
 
-    @media (width > 780px) {
-      clip-path: polygon(
-        2% 0,
-        98% 0,
-        100% 2%,
-        100% 98%,
-        98% 100%,
-        2% 100%,
-        0 98%,
-        0 2%
-      );
+    @media (width >= 900px) {
+      clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 2% 100%, 0 96%);
     }
   }
 }
