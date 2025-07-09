@@ -10,7 +10,8 @@ import WeightPlateAlertDialog from "./components/WeightPlateAlertDialog";
 function App() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   return (
-    <div className="relative min-h-screen bg-[var(--bg-clr)]">
+    // <div className="relative min-h-screen bg-[var(--bg-clr)]">
+    <div className="app">
       <Header />
       <WeightPlateAlertDialog
         open={isDialogOpen}
@@ -18,9 +19,9 @@ function App() {
       />
 
       <WeightPlateContextProvider>
-        <main className="max-w-7xl px-4 pb-10 md:mx-auto md:px-8">
-          <div className="clip-path mt-6 flex flex-col md:flex-row">
-            <div className="md:min-w-80 md:max-w-80 md:border-r-4 md:border-blue-600">
+        <main className="w-full max-w-7xl px-4 pb-10 md:mx-auto md:px-8">
+          <div className="clip-path mt-6 flex h-full flex-col md:flex-row">
+            <div className="md:min-w-80 md:max-w-80 md:border-r-[3px] md:border-blue-600">
               <WeightPlateInventory />
               <hr
                 aria-hidden="true"
