@@ -2,6 +2,8 @@
 
 The Barbell Load Calculator _(BLC)_ is a web application designed to simplify the process of calculating weight plates for barbell exercises. Whether you're lifting heavy loads or aiming for precision with lighter weights, _BLC_ eliminates the mental math by dynamically calculating the exact weight plates required based on your inputs.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R5R11I1F9K)
+
 ![Barbell Load Calculator](public/screenshot.webp)
 
 ## Features
