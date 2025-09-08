@@ -6,6 +6,7 @@ import WeightPlateInventory from "./components/WeightPlateInventory";
 import WeightPlates from "./components/WeightPlates";
 import { WeightPlateContextProvider } from "./context/WeightPlateContext";
 import WeightPlateAlertDialog from "./components/WeightPlateAlertDialog";
+import OneRepMaxCalcDialog from "./components/OneRepMaxCalcDialog";
 
 function App() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -17,6 +18,7 @@ function App() {
         open={isDialogOpen}
         closeDialog={() => setIsDialogOpen(false)}
       />
+      <OneRepMaxCalcDialog />
 
       <WeightPlateContextProvider>
         <main className="w-full max-w-7xl px-4 pb-10 md:mx-auto md:px-8">
