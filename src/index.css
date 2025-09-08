@@ -22,7 +22,7 @@
   background: var(--bg-clr);
 }
 
-header {
+.header {
   position: relative;
   background: var(--blue-clr);
   -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
@@ -76,7 +76,7 @@ header {
     }
   }
 }
-header h1 img {
+.header h1 img {
   width: clamp(240px, 40vw, 320px);
   height: auto;
   object-fit: cover;
